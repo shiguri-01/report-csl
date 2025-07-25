@@ -1,0 +1,36 @@
+susume:
+  type: book
+  title: Typstのすゝめ
+  author:
+    - 山田 太郎
+  page-range: 10
+  publisher: それがし出版
+  date: 2025
+
+tech:
+  type: article
+  title: Typstの基礎技術
+  author:
+    - 伊藤 和夫
+    - 佐藤 花子
+    - 鈴木 次郎
+  page-range: 35-40
+  date: 2025
+  parent:
+    type: periodical
+    title: ほげほげ論文誌
+    volume: 7
+    issue: 4
+
+iizo:
+  type: article
+  title: Typstで論文を書こう
+  author: 勅使河原 一郎
+  url:
+    value: https://example.com/typst-is-good
+    date: 2025-07-25
+  date: 2025-04-01
+  parent:
+    type: web
+    title: てしてしウェブメディア
+
