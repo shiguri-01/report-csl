@@ -89,17 +89,16 @@
             </if>
           </choose>
           <date variable="issued" prefix="，">
-            <date-part name="year"/>
-            <date-part name="month" prefix="年" form="numeric"/>
-            <date-part name="day" prefix="日 "/>
+            <date-part name="year" suffix="年"/>
+            <date-part name="month" suffix="月" form="numeric"/>
+            <date-part name="day" suffix="日" form="numeric"/>
           </date>
-          <text variable="URL" prefix="日，"/>
-          <date variable="accessed" prefix="（参照 ">
-            <date-part name="year"/>
-            <date-part name="month" prefix="年" form="numeric"/>
-            <date-part name="day" prefix="月" form="numeric"/>
+          <text variable="URL" prefix="，"/>
+          <date variable="accessed" prefix="（参照 " suffix="）">
+            <date-part name="year" suffix="年"/>
+            <date-part name="month" suffix="月" form="numeric"/>
+            <date-part name="day" suffix="日" form="numeric"/>
           </date>
-          <text value="日）"/>
         </else-if>
         <!-- Web記事の場合 -->
         <else-if type="article-newspaper">
@@ -111,17 +110,16 @@
           </group>
           <text variable="container-title" prefix="，"/>
           <date variable="issued" prefix="，">
-            <date-part name="year"/>
-            <date-part name="month" prefix="年" form="numeric"/>
-            <date-part name="day" prefix="月" form="numeric"/>
+            <date-part name="year" suffix="年"/>
+            <date-part name="month" suffix="月" form="numeric"/>
+            <date-part name="day" suffix="日" form="numeric"/>
           </date>
-          <text variable="URL" prefix="日，"/>
-          <date variable="accessed" prefix="（参照 ">
-            <date-part name="year"/>
-            <date-part name="month" prefix="年" form="numeric"/>
-            <date-part name="day" prefix="月" form="numeric"/>
+          <text variable="URL" prefix="，"/>
+          <date variable="accessed" prefix="（参照 " suffix="）">
+            <date-part name="year" suffix="年"/>
+            <date-part name="month" suffix="月" form="numeric"/>
+            <date-part name="day" suffix="日" form="numeric"/>
           </date>
-          <text value="日）"/>
         </else-if>
         <!-- その他の場合 -->
         <else>
