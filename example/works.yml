@@ -1,4 +1,4 @@
-susume:
+typst-introduction:
   type: book
   title: 実践Typst入門
   author:
@@ -7,7 +7,7 @@ susume:
   publisher: 技術書出版
   date: 2025
 
-tech:
+auto-typesetting:
   type: article
   title: Typstにおける自動組版のアルゴリズム
   author:
@@ -22,7 +22,7 @@ tech:
     volume: 7
     issue: 4
 
-iizo:
+best-practices:
   type: article
   title: Typstで論文を書くためのベストプラクティス
   author: 勅使河原 一郎
