@@ -15,6 +15,35 @@
     <rights license="http://creativecommons.org/publicdomain/zero/1.0/">This work is licensed under a CC0 1.0 Universal Public Domain Dedication</rights>
   </info>
 
+  <macro name="pages">
+    <group delimiter=" ">
+      <label variable="page" form="short"/>
+      <text variable="page"/>
+    </group>
+  </macro>
+
+   <macro name="issued-data-year">
+    <date variable="issued" prefix="（" suffix="）">
+      <date-part name="year"/>
+    </date>
+  </macro>
+
+  <macro name="issued-data-full">
+    <date variable="issued">
+      <date-part name="year" suffix="年"/>
+      <date-part name="month" suffix="月" form="numeric"/>
+      <date-part name="day" suffix="日" form="numeric"/>
+    </date>
+  </macro>
+
+  <macro name="accessed-date">
+    <date variable="accessed" prefix="（参照 " suffix="）">
+      <date-part name="year" suffix="年"/>
+      <date-part name="month" suffix="月" form="numeric"/>
+      <date-part name="day" suffix="日" form="numeric"/>
+    </date>
+  </macro>
+
   <!-- 引用部分 -->
   <citation collapse="citation-number" et-al-min="11" et-al-use-first="10">
     <sort>
@@ -30,7 +59,7 @@
     <layout suffix="．">
       <text variable="citation-number" prefix="[" suffix="] "/>
       <choose>
-        <!-- 書籍の場合 -->
+        <!-- 書籍 -->
         <if type="book">
           <group delimiter="：">
             <names variable="author" delimiter="，">
@@ -39,12 +68,11 @@
             <text variable="title" prefix="「" suffix="」"/>
           </group>
           <text variable="publisher" prefix="，"/>
-          <text variable="page" prefix="，p. "/>
-          <date variable="issued" prefix="（" suffix="）">
-            <date-part name="year"/>
-          </date>
+          <text macro="pages" prefix="，"/>
+          <text macro="issued-data-year"/>
         </if>
-        <!-- 学術論文の場合 -->
+
+        <!-- 学術論文 -->
         <else-if type="article-journal">
           <group delimiter="：">
             <names variable="author" delimiter="，">
@@ -55,12 +83,11 @@
           <text variable="container-title" prefix="，"/>
           <text variable="volume" prefix="，" suffix=" 巻"/>
           <text variable="issue" prefix="，" suffix=" 号"/>
-          <text variable="page" prefix="，pp. "/>
-          <date variable="issued" prefix="（" suffix="）">
-            <date-part name="year"/>
-          </date>
+          <text macro="pages" prefix="，"/>
+          <text macro="issued-data-year"/>
         </else-if>
-        <!-- 会議論文の場合 -->
+
+        <!-- 会議論文 -->
         <else-if type="paper-conference">
           <group delimiter="：">
             <names variable="author" delimiter="，">
@@ -69,12 +96,11 @@
             <text variable="title" prefix="「" suffix="」"/>
           </group>
           <text variable="container-title" prefix="，"/>
-          <text variable="page" prefix="，pp. "/>
-          <date variable="issued" prefix="（" suffix="）">
-            <date-part name="year"/>
-          </date>
+          <text macro="pages" prefix="，"/>
+          <text macro="issued-data-year"/>
         </else-if>
-        <!-- Webサイトの場合 -->
+
+        <!-- Webサイト -->
         <else-if type="webpage">
           <group delimiter="：">
             <names variable="author" delimiter="，">
@@ -83,24 +109,17 @@
             <text variable="title" prefix="「" suffix="」"/>
           </group>
           <choose>
-            <!-- コンテナタイトル（サイト名）がある場合 -->
+            <!-- container-title（サイト名）がある場合 -->
             <if variable="container-title">
               <text variable="container-title" prefix="，"/>
             </if>
           </choose>
-          <date variable="issued" prefix="，">
-            <date-part name="year" suffix="年"/>
-            <date-part name="month" suffix="月" form="numeric"/>
-            <date-part name="day" suffix="日" form="numeric"/>
-          </date>
+          <text macro="issued-data-full" prefix="，"/>
           <text variable="URL" prefix="，"/>
-          <date variable="accessed" prefix="（参照 " suffix="）">
-            <date-part name="year" suffix="年"/>
-            <date-part name="month" suffix="月" form="numeric"/>
-            <date-part name="day" suffix="日" form="numeric"/>
-          </date>
+          <text macro="accessed-date"/>
         </else-if>
-        <!-- Web記事の場合 -->
+
+        <!-- 新聞・Web記事 -->
         <else-if type="article-newspaper">
           <group delimiter="：">
             <names variable="author" delimiter="，">
@@ -109,19 +128,12 @@
             <text variable="title" prefix="「" suffix="」"/>
           </group>
           <text variable="container-title" prefix="，"/>
-          <date variable="issued" prefix="，">
-            <date-part name="year" suffix="年"/>
-            <date-part name="month" suffix="月" form="numeric"/>
-            <date-part name="day" suffix="日" form="numeric"/>
-          </date>
+          <text macro="issued-data-full" prefix="，"/>
           <text variable="URL" prefix="，"/>
-          <date variable="accessed" prefix="（参照 " suffix="）">
-            <date-part name="year" suffix="年"/>
-            <date-part name="month" suffix="月" form="numeric"/>
-            <date-part name="day" suffix="日" form="numeric"/>
-          </date>
+          <text macro="accessed-date"/>
         </else-if>
-        <!-- その他の場合 -->
+
+        <!-- その他 -->
         <else>
           <group delimiter="：">
             <names variable="author" delimiter="，">
@@ -130,10 +142,8 @@
             <text variable="title" prefix="「" suffix="」"/>
           </group>
           <text variable="container-title" prefix="，"/>
-          <text variable="page" prefix="，pp. "/>
-          <date variable="issued" prefix="（" suffix="）">
-            <date-part name="year"/>
-          </date>
+          <text macro="pages" prefix="，"/>
+          <text macro="issued-data-year"/>
         </else>
       </choose>
     </layout>
